@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Épicurio</string>
+    <string name="bouton_entree">Commencez à cuisiner</string>
+    <string name="texte_entree">Bienvenue sur</string>
+    <string name="photo_de_plat">Photo de plat</string>
+    <string name="label_chercherplat">Nom de votre plat : </string>
+    <string name="chercher_par_difficult">Chercher par difficulté</string>
+    <string name="plat_aleatoire">Plat aléatoire</string>
+    <string name="afficher_tous_les_plats">Afficher tous les plats</string>
+    <string name="type_de_plat">Type de Plat</string>
+    <string name="entrez_le_nom_du_plat">Entrez le nom du plat</string>
+    <string name="ingredients">Ingrédients</string>
+    <string name="description_image_recette">Image de la recette de cuisine\n</string>
+</resources>

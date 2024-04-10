@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/principal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDEEE0"
+    android:backgroundTint="#FDEEE0"
+    tools:context="com.btssio.ozenne.eatspiration.controller.MainActivity">
+
+    <TextView
+        android:id="@+id/titre_entree"
+        android:layout_width="376dp"
+        android:layout_height="59dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/texte_entree"
+        android:textAlignment="center"
+        android:textColor="#787878"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428" />
+
+    <TextView
+        android:id="@+id/nomapp_entree"
+        android:layout_width="376dp"
+        android:layout_height="59dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="#FF6363"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <Button
+        android:id="@+id/button_entree"
+        android:layout_width="315dp"
+        android:layout_height="72dp"
+        android:backgroundTint="#FF6363"
+        android:text="@string/bouton_entree"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.667" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="402dp"
+        android:layout_height="384dp"
+        android:layout_marginStart="-150dp"
+        android:layout_marginTop="-150dp"
+        android:layout_marginBottom="-150dp"
+        android:contentDescription="@string/photo_de_plat"
+        android:src="@drawable/plat1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="VisualLintBounds" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="356dp"
+        android:layout_height="356dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="-170dp"
+        android:contentDescription="@string/photo_de_plat"
+        android:src="@drawable/plat2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_entree"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="VisualLintBounds" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="358dp"
+        android:layout_height="343dp"
+        android:layout_marginStart="-150dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginEnd="-150dp"
+        android:contentDescription="@string/photo_de_plat"
+        android:src="@drawable/plat3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="VisualLintBounds" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

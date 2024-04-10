@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/principal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDEEE0"
+    android:backgroundTint="#FDEEE0"
+    tools:context="com.btssio.ozenne.eatspiration.controller.BoutonsActivity"
+    tools:layout_editor_absoluteX="7dp"
+    tools:layout_editor_absoluteY="-87dp">
+
+
+    <ImageView
+        android:contentDescription="@string/photo_de_plat"
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginBottom="-320dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/plat3" />
+
+    <TextView
+        android:id="@+id/txtHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="47dp"
+        android:background="#FF6363"
+        android:fontFamily="sans-serif-medium"
+        android:padding="16dp"
+        android:text="@string/app_name"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAfficherTousLesPlats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnChercherPlatParDifficulte"
+        android:layout_width="297dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#7EFF4D"
+        android:text="@string/chercher_par_difficult"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.651" />
+
+    <TextView
+        android:id="@+id/labelChercherNomPlat"
+        android:layout_width="152dp"
+        android:layout_height="26dp"
+        android:text="@string/label_chercherplat"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/edtChercherPlatParNom"
+        app:layout_constraintEnd_toStartOf="@+id/edtChercherPlatParNom"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edtChercherPlatParNom"
+        app:layout_constraintVertical_bias="0.538" />
+
+    <Button
+        android:id="@+id/btnPlatAleatoire"
+        android:layout_width="297dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#FFC157"
+        android:text="@string/plat_aleatoire"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <Button
+
+        android:id="@+id/btnAfficherTousLesPlats"
+        android:layout_width="342dp"
+        android:layout_height="79dp"
+        android:backgroundTint="#69C3FF"
+        android:text="@string/afficher_tous_les_plats"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.17" />
+
+    <Button
+        android:id="@+id/btnTypePlat"
+        android:layout_width="169dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#AE68FF"
+        android:text="@string/type_de_plat"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnIngrédients"
+        app:layout_constraintEnd_toStartOf="@+id/btnIngrédients"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnIngrédients"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnIngrédients"
+        android:layout_width="169dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#D76AFF"
+        android:text="@string/ingredients"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.782" />
+
+    <EditText
+        android:inputType="text"
+        android:autofillHints="name"
+        android:id="@+id/edtChercherPlatParNom"
+        android:layout_width="228dp"
+        android:layout_height="52dp"
+        android:hint="@string/entrez_le_nom_du_plat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
