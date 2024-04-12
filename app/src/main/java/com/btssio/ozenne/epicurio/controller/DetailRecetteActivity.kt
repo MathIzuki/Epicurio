@@ -1,15 +1,12 @@
-package com.btssio.ozenne.eatspiration.controller
+package com.btssio.ozenne.epicurio.controller
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.btssio.ozenne.eatspiration.R
-import com.btssio.ozenne.eatspiration.model.TypeDePlat
+import com.btssio.ozenne.epicurio.R
+import com.btssio.ozenne.epicurio.model.TypeDePlat
 
 class DetailRecetteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

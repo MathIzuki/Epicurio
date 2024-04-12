@@ -1,4 +1,4 @@
-package com.btssio.ozenne.eatspiration.controller
+package com.btssio.ozenne.epicurio.controller
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.btssio.ozenne.eatspiration.R
+import com.btssio.ozenne.epicurio.R
 
 
 class MainActivity : AppCompatActivity() {

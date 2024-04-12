@@ -1,6 +1,7 @@
-package com.btssio.ozenne.eatspiration.controller
+package com.btssio.ozenne.epicurio.controller
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -9,12 +10,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.btssio.ozenne.eatspiration.R
-import com.btssio.ozenne.eatspiration.model.NiveauDifficulte
-import com.btssio.ozenne.eatspiration.model.Recette
-import com.btssio.ozenne.eatspiration.model.RecetteAdapter
-import com.btssio.ozenne.eatspiration.model.TypeDePlat
-import com.btssio.ozenne.eatspiration.repository.RecetteRepository
+import com.btssio.ozenne.epicurio.R
+import com.btssio.ozenne.epicurio.model.NiveauDifficulte
+import com.btssio.ozenne.epicurio.model.Recette
+import com.btssio.ozenne.epicurio.model.RecetteAdapter
+import com.btssio.ozenne.epicurio.model.TypeDePlat
+import com.btssio.ozenne.epicurio.repository.RecetteRepository
 
 class AffichageRecettesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,7 @@ class AffichageRecettesActivity : AppCompatActivity() {
         afficherRecettes(recettes)
     }
     private fun filtrerRecettes(typeFiltre: String?, critere: String?): List<Recette> {
-        val repository = RecetteRepository()
+        val repository = RecetteRepository(this@AffichageRecettesActivity)
 
         return when (typeFiltre) {
             "DIFFICULTE" -> repository.filtrerRecettesParDifficulte(NiveauDifficulte.valueOf(critere!!))

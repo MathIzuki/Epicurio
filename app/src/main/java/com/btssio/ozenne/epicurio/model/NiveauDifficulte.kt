@@ -1,4 +1,4 @@
-package com.btssio.ozenne.eatspiration.model
+package com.btssio.ozenne.epicurio.model
 
 enum class NiveauDifficulte {
     FACILE,

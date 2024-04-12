@@ -1,4 +1,4 @@
-package com.btssio.ozenne.eatspiration
+package com.btssio.ozenne.epicurio
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

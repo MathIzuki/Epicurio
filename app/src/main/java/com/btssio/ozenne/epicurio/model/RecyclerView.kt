@@ -1,13 +1,14 @@
-package com.btssio.ozenne.eatspiration.model
+package com.btssio.ozenne.epicurio.model
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.btssio.ozenne.eatspiration.R
-import com.btssio.ozenne.eatspiration.controller.DetailRecetteActivity
+import com.btssio.ozenne.epicurio.R
+import com.btssio.ozenne.epicurio.controller.DetailRecetteActivity
 
 class RecetteAdapter(private val recettes: List<Recette>) : RecyclerView.Adapter<RecetteAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -35,7 +36,7 @@ class RecetteAdapter(private val recettes: List<Recette>) : RecyclerView.Adapter
                 putExtra("TEMPS_PREPARATION", recette.tempsPreparation)
                 putExtra("DIFFICULTE", recette.difficulte.name)
                 putExtra("TYPE_PLAT", recette.type.name)
-                recette.imageResId?.let { putExtra("IMAGE_RES_ID", it) }
+                putExtra("IMAGE_RES_ID", recette.imageResId.toInt())
             }
             context.startActivity(intent)
         }

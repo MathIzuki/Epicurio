@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FDEEE0"
     android:backgroundTint="#FDEEE0"
-    tools:context="com.btssio.ozenne.eatspiration.controller.BoutonsActivity"
+    tools:context="com.btssio.ozenne.epicurio.controller.BoutonsActivity"
     tools:layout_editor_absoluteX="7dp"
     tools:layout_editor_absoluteY="-87dp">
 

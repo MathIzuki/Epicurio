@@ -1,4 +1,4 @@
-package com.btssio.ozenne.eatspiration.model
+package com.btssio.ozenne.epicurio.model
 
 data class Recette(
     val id: Int,
@@ -8,6 +8,5 @@ data class Recette(
     val tempsPreparation: Int, // en minutes
     val difficulte: NiveauDifficulte,
     val type: TypeDePlat, // Ajout d'un nouveau champ pour le type de plat
-    val imageResId: Int? = null // Ajoutez ce champ pour stocker l'ID de ressource de l'image
-
+    var imageResId: String // Changé en String pour gérer la conversion après la désérialisation
 )

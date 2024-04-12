@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FDEEE0"
     android:backgroundTint="#FDEEE0"
-    tools:context="com.btssio.ozenne.eatspiration.controller.MainActivity">
+    tools:context="com.btssio.ozenne.epicurio.controller.MainActivity">
 
     <TextView
         android:id="@+id/titre_entree"

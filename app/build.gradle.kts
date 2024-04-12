@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.btssio.ozenne.eatspiration"
+    namespace = "com.btssio.ozenne.epicurio"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.btssio.ozenne.eatspiration"
+        applicationId = "com.btssio.ozenne.epicurio"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

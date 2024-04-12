@@ -1,7 +1,8 @@
-package com.btssio.ozenne.eatspiration.controller
+package com.btssio.ozenne.epicurio.controller
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -11,8 +12,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.btssio.ozenne.eatspiration.R
-import com.btssio.ozenne.eatspiration.repository.RecetteRepository
+import com.btssio.ozenne.epicurio.R
+import com.btssio.ozenne.epicurio.repository.RecetteRepository
 import com.google.android.material.button.MaterialButton
 
 class BoutonsActivity : AppCompatActivity() {
@@ -68,10 +69,8 @@ class BoutonsActivity : AppCompatActivity() {
 
         findViewById<MaterialButton>(R.id.btnPlatAleatoire).setOnClickListener {
             // Supposons que RecetteRepository a une méthode getRecetteAleatoire() qui renvoie une recette aléatoire
-            val repository = RecetteRepository()
-
+            val repository = RecetteRepository(this@BoutonsActivity)
             val recetteAleatoire = repository.obtenirRecetteAleatoire()
-
             // Création de l'intent pour démarrer DetailRecetteActivity
             val intent = Intent(this, DetailRecetteActivity::class.java).apply {
                 if(recetteAleatoire != null) {

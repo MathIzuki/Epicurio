@@ -1,4 +1,4 @@
-package com.btssio.ozenne.eatspiration
+package com.btssio.ozenne.epicurio
 
 import org.junit.Test
 
