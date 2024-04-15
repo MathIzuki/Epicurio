@@ -28,7 +28,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRecettes"
         android:layout_width="437dp"
-        android:layout_height="600dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"

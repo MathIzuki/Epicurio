@@ -28,6 +28,7 @@ class BoutonsActivity : AppCompatActivity() {
             insets
         }
 
+        // Configuration des boutons et leurs écouteurs d'événements pour lancer différentes activités ou dialogues.
         findViewById<MaterialButton>(R.id.btnTypePlat).setOnClickListener {
             montrerDialogueTypeDePlat()
         }
@@ -37,14 +38,19 @@ class BoutonsActivity : AppCompatActivity() {
         }
 
         val edtChercherPlatParNom = findViewById<EditText>(R.id.edtChercherPlatParNom)
+        // Mise en place d'un écouteur d'événements sur les actions de l'éditeur de texte.
         edtChercherPlatParNom.setOnEditorActionListener { v, actionId, event ->
+            // Vérification si l'action correspond à une action de recherche ou de validation
+            // ou si la touche Entrée a été pressée.
             if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE ||
                 event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-                // Exécutez votre logique de recherche ici
+                // Extraction du texte saisi par l'utilisateur, nettoyage des espaces avant et après le texte.
                 val nomPlat = edtChercherPlatParNom.text.toString().trim()
+                // Vérification si le texte extrait n'est pas vide.
                 if (nomPlat.isNotEmpty()) {
-                    // Création et démarrage de l'Intent vers AffichageRecettesActivity avec le nom du plat
+                    // Création d'une intention pour démarrer une nouvelle activité avec des paramètres supplémentaires.
                     val intent = Intent(this, AffichageRecettesActivity::class.java).apply {
+                        // Ajout d'extra pour préciser le type de filtre (par nom) et le critère (nom du plat).
                         putExtra("TYPE_FILTRE", "NOM")
                         putExtra("CRITERE", nomPlat)
                     }
@@ -60,39 +66,44 @@ class BoutonsActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.btnAfficherTousLesPlats).setOnClickListener {
             // Création d'un intent pour démarrer AffichageRecettesActivity sans filtre spécifique
             val intent = Intent(this, AffichageRecettesActivity::class.java).apply {
-                // Vous pourriez passer un extra spécifique pour indiquer que vous voulez afficher toutes les recettes
-                // ou vous pouvez simplement ne pas passer de filtre et gérer ce cas dans AffichageRecettesActivity
                 putExtra("AFFICHAGE", "TOUTES")
             }
             startActivity(intent)
         }
 
+        // Récupération du bouton par son ID et configuration d'un écouteur de clic.
         findViewById<MaterialButton>(R.id.btnPlatAleatoire).setOnClickListener {
-            // Supposons que RecetteRepository a une méthode getRecetteAleatoire() qui renvoie une recette aléatoire
+            // Création d'une instance de RecetteRepository pour accéder aux méthodes de gestion des recettes.
             val repository = RecetteRepository(this@BoutonsActivity)
+
+            // Appel de la méthode pour obtenir une recette aléatoire depuis le repository.
             val recetteAleatoire = repository.obtenirRecetteAleatoire()
-            // Création de l'intent pour démarrer DetailRecetteActivity
+
+            // Création d'une intention pour démarrer DetailRecetteActivity, destinée à afficher les détails de la recette.
             val intent = Intent(this, DetailRecetteActivity::class.java).apply {
-                if(recetteAleatoire != null) {
-                    putExtra("TITRE", recetteAleatoire.titre)
-                    putExtra("INGREDIENTS", recetteAleatoire.ingredients.joinToString(", "))
-                    putExtra("INSTRUCTIONS", recetteAleatoire.instructions)
-                    putExtra("TEMPS_PREPARATION", recetteAleatoire.tempsPreparation)
-                    putExtra("DIFFICULTE", recetteAleatoire.difficulte.name)
-                    putExtra("TYPE_PLAT", recetteAleatoire.type.name)
-                    putExtra("IMAGE_RES_ID", recetteAleatoire.imageResId)
+                // Vérification si une recette a été obtenue avec succès.
+                if (recetteAleatoire != null) {
+                    // Ajout des détails de la recette à l'intent pour être utilisés dans l'activité de détail.
+                    putExtra("TITRE", recetteAleatoire.titre)  // Titre de la recette.
+                    putExtra("INGREDIENTS", recetteAleatoire.ingredients.joinToString(", "))  // Liste des ingrédients.
+                    putExtra("INSTRUCTIONS", recetteAleatoire.instructions)  // Instructions de préparation.
+                    putExtra("TEMPS_PREPARATION", recetteAleatoire.tempsPreparation)  // Temps nécessaire pour préparer.
+                    putExtra("DIFFICULTE", recetteAleatoire.difficulte.name)  // Niveau de difficulté de la recette.
+                    putExtra("TYPE_PLAT", recetteAleatoire.type.name)  // Type de plat (entrée, dessert, etc.).
+                    putExtra("IMAGE_RES_ID", recetteAleatoire.imageResId.toInt())  // Référence à l'image associée à la recette.
                 }
             }
 
-            // Démarrage de DetailRecetteActivity avec l'intent
+            // Démarrage de DetailRecetteActivity avec l'intent contenant les données de la recette.
             startActivity(intent)
         }
-
 
         findViewById<MaterialButton>(R.id.btnChercherPlatParDifficulte).setOnClickListener {
             montrerDialogueDifficultes()
         }
     }
+
+    // Définition de la fonction qui montre un dialogue avec des options de types de plats.
     private fun montrerDialogueTypeDePlat() {
         // Tableau pour l'affichage dans le dialogue
         val typesDePlatAffichage = arrayOf("Entrée", "Plat Principal", "Dessert", "Snack", "Accompagnement")
@@ -115,25 +126,40 @@ class BoutonsActivity : AppCompatActivity() {
         builder.create().show()
     }
 
-
+    // Définition de la fonction pour afficher un dialogue de sélection de difficulté.
     private fun montrerDialogueDifficultes() {
+        // Tableau contenant les options de difficulté à afficher dans le dialogue.
         val difficulte = arrayOf("FACILE", "MOYEN", "DIFFICILE")
+
+        // Création d'un constructeur de dialogue AlertDialog avec le contexte de l'activité actuelle.
         val builder = AlertDialog.Builder(this)
+
+        // Configuration du titre du dialogue.
         builder.setTitle("Difficulté du plat")
+            // Ajout des éléments (difficultés) au dialogue, avec un écouteur d'événements pour les clics sur les éléments.
             .setItems(difficulte) { dialog, which ->
-                val choixUtilisateur = difficulte[which] // Récupération du choix de l'utilisateur
-                // Intention d'ouvrir AffichageRecettesActivity avec le filtre de difficulté appliqué
+                // Récupération du choix de l'utilisateur basé sur l'index de l'élément sélectionné.
+                val choixUtilisateur = difficulte[which]
+
+                // Création d'une intention pour démarrer AffichageRecettesActivity avec des extras spécifiant le filtre.
                 val intent = Intent(this, AffichageRecettesActivity::class.java).apply {
+                    // Ajout d'extras pour passer le type de filtre et le critère spécifique choisi (niveau de difficulté).
                     putExtra("TYPE_FILTRE", "DIFFICULTE")
                     putExtra("CRITERE", choixUtilisateur)
                 }
+
+                // Démarrage de l'activité cible avec l'intention configurée.
                 startActivity(intent)
             }
+
+        // Construction et affichage du dialogue.
         builder.create().show()
     }
 
+
     private fun montrerDialogueSelectionIngredients() {
-         val ingredients = arrayOf(
+        // Initialisation d'un tableau contenant les ingrédients disponibles pour la sélection.
+        val ingredients = arrayOf(
             "Tomates", "Œufs", "Fromage", "Poulet", "Pâtes", "Riz",
             "Poivrons", "Oignons", "Ail", "Carottes", "Courgettes",
             "Champignons", "Crevettes", "Saumon", "Boeuf", "Porc",
@@ -142,33 +168,39 @@ class BoutonsActivity : AppCompatActivity() {
             "Beurre", "Huile d'olive", "Vinaigre", "Citron", "Avocat",
             "Noix", "Amandes", "Lentilles", "Pois chiches", "Quinoa"
         )
+
+        // Création d'un tableau de booléens pour garder trace des ingrédients sélectionnés.
         val ingredientsSelectionnes = BooleanArray(ingredients.size) { false }
 
+        // Construction du dialogue avec AlertDialog.Builder.
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Sélectionnez les ingrédients")
 
+        // Ajout d'options multiples avec des cases à cocher pour chaque ingrédient.
         builder.setMultiChoiceItems(ingredients, ingredientsSelectionnes) { _, which, isChecked ->
-            // Mettre à jour le tableau d'ingrédients sélectionnés
+            // Mise à jour de l'état de sélection pour chaque ingrédient lorsque l'utilisateur modifie son choix.
             ingredientsSelectionnes[which] = isChecked
         }
 
+        // Configuration du bouton "OK" du dialogue.
         builder.setPositiveButton("OK") { _, _ ->
-            // Récupérer les ingrédients choisis
+            // Filtrage et récupération des ingrédients choisis basés sur leur état de sélection.
             val ingredientsChoisis = ingredients.filterIndexed { index, _ -> ingredientsSelectionnes[index] }
 
-            // Passer les ingrédients choisis à AffichageRecettesActivity via Intent
+            // Création d'une intention pour démarrer une nouvelle activité avec les ingrédients sélectionnés.
             val intent = Intent(this, AffichageRecettesActivity::class.java).apply {
                 putExtra("TYPE_FILTRE", "INGREDIENTS")
                 putExtra("CRITERE", ingredientsChoisis.joinToString(","))
             }
-            startActivity(intent)
+            startActivity(intent)  // Démarrage de l'activité avec l'intention contenant les ingrédients.
         }
 
+        // Configuration du bouton "Annuler" pour fermer le dialogue sans action supplémentaire.
         builder.setNegativeButton("Annuler") { dialog, _ ->
-            // Gestion du clic sur le bouton Annuler si nécessaire
             dialog.dismiss()
         }
 
+        // Création et affichage du dialogue.
         val dialog = builder.create()
         dialog.show()
     }

@@ -31,15 +31,16 @@ class AffichageRecettesActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // Exemple pour récupérer le type de filtre et les critères
+        // Récupération des paramètres de filtrage passés par l'intent.
         val typeFiltre = intent.getStringExtra("TYPE_FILTRE")
         val critere = intent.getStringExtra("CRITERE")
-
+        // Filtrage des recettes selon les critères récupérés.
         val recettes = filtrerRecettes(typeFiltre, critere)
 
-        // Afficher les recettes filtrées
+        // Affichage des recettes filtrées dans l'interface utilisateur.
         afficherRecettes(recettes)
     }
+    // Méthode pour filtrer les recettes en fonction des critères spécifiés.
     private fun filtrerRecettes(typeFiltre: String?, critere: String?): List<Recette> {
         val repository = RecetteRepository(this@AffichageRecettesActivity)
 
@@ -54,6 +55,7 @@ class AffichageRecettesActivity : AppCompatActivity() {
             else -> repository.obtenirToutesLesRecettes()
         }
     }
+    // Méthode pour afficher les recettes filtrées à l'aide d'un RecyclerView.
     private fun afficherRecettes(recettes: List<Recette>) {
         if (recettes.isEmpty()) {
             // Aucune recette ne correspond à la sélection, affichez un Toast

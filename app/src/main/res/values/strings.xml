@@ -11,4 +11,6 @@
     <string name="entrez_le_nom_du_plat">Entrez le nom du plat</string>
     <string name="ingredients">Ingrédients</string>
     <string name="description_image_recette">Image de la recette de cuisine\n</string>
+    <string name="ingredientstitre">Ingrédients</string>
+    <string name="instructionstitre">Instructions</string>
 </resources>

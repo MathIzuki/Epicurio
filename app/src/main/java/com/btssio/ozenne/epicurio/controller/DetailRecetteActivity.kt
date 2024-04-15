@@ -24,14 +24,12 @@ class DetailRecetteActivity : AppCompatActivity() {
         val difficulte = intent.getStringExtra("DIFFICULTE")
         val typePlat = intent.getStringExtra("TYPE_PLAT")
         val imageResId = intent.getIntExtra("IMAGE_RES_ID", 0)
-
         // Affichage des informations de la recette
         findViewById<TextView>(R.id.textViewTitreRecette).text = titre
         findViewById<TextView>(R.id.textViewIngredientsRecette).text = ingredients
         findViewById<TextView>(R.id.textViewInstructionsRecette).text = instructions
         val affichageTempsPreparation = "$tempsPreparation minutes"
         findViewById<TextView>(R.id.textViewTempsPreparation).text = "Temps de préparation : " + affichageTempsPreparation
-        Log.d("temps", tempsPreparation.toString())
         if (difficulte != null) {
             findViewById<TextView>(R.id.textViewDifficulte).text = "Difficulté : "+ difficulte.capitalizeFirstLetter()
         }

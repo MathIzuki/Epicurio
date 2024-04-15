@@ -13,20 +13,21 @@
 
 
     <ImageView
-        android:contentDescription="@string/photo_de_plat"
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="-100dp"
         android:layout_marginBottom="-320dp"
+        android:contentDescription="@string/photo_de_plat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/plat3" />
+        app:srcCompat="@drawable/plat3"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/txtHeader"
@@ -38,7 +39,7 @@
         android:padding="16dp"
         android:text="@string/app_name"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/white"
+        android:textColor="#5D4037"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/btnAfficherTousLesPlats"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +72,8 @@
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edtChercherPlatParNom"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.538"
+        tools:ignore="TextSizeCheck" />
 
     <Button
         android:id="@+id/btnPlatAleatoire"
@@ -130,12 +132,13 @@
         app:layout_constraintVertical_bias="0.782" />
 
     <EditText
-        android:inputType="text"
-        android:autofillHints="name"
         android:id="@+id/edtChercherPlatParNom"
         android:layout_width="228dp"
         android:layout_height="52dp"
+        android:autofillHints="name"
         android:hint="@string/entrez_le_nom_du_plat"
+        android:inputType="text"
+        android:textColorHint="#616161"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.912"

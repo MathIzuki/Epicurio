@@ -21,21 +21,19 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        // Trouve le bouton dans le layout par son identifiant.
+
         val bouton_entree = findViewById<Button>(R.id.button_entree)
+        // Définit un écouteur d'événements de clic pour ce bouton.
+
         bouton_entree.setOnClickListener() {
+            // Crée une intention pour démarrer une nouvelle activité.
             val intention = Intent(this, BoutonsActivity::class.java)
+            // Démarre l'activité spécifiée par l'intention.
             startActivity(intention)
             finish()
         }
-        val typeDePlat = intent.getStringExtra("typeDePlat")
-        if(typeDePlat != null){
-            Toast.makeText(this, "Votre choix est : $typeDePlat", Toast.LENGTH_SHORT).show()
-        }
-        val difficulte = intent.getStringExtra("difficulte")
-        if(difficulte != null){
-            Toast.makeText(this, "Difficulte : $difficulte", Toast.LENGTH_SHORT).show()
 
-        }
 
     }
 }
