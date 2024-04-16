@@ -28,11 +28,14 @@ class BoutonsActivity : AppCompatActivity() {
             insets
         }
 
-        // Configuration des boutons et leurs écouteurs d'événements pour lancer différentes activités ou dialogues.
+        // Lorsqu'on clique sur le bouton type de plat on utilise la méthode montrerDialogueTypeDePlat pour
+        // afficher une boite de dialogue et séléctionner le type de son plat
         findViewById<MaterialButton>(R.id.btnTypePlat).setOnClickListener {
             montrerDialogueTypeDePlat()
         }
 
+        // Lorsqu'on clique sur le bouton type de plat on utilise la méthode montrerDialogueSelectionIngredients pour
+        // afficher une boite de dialogue et on séléctionne ses ingrédients
         findViewById<MaterialButton>(R.id.btnIngrédients).setOnClickListener {
             montrerDialogueSelectionIngredients()
         }
@@ -44,7 +47,7 @@ class BoutonsActivity : AppCompatActivity() {
             // ou si la touche Entrée a été pressée.
             if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE ||
                 event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-                // Extraction du texte saisi par l'utilisateur, nettoyage des espaces avant et après le texte.
+                // Extraction du texte saisi par l'utilisateur, nettoyage des espaces avant et après le texte avec trim
                 val nomPlat = edtChercherPlatParNom.text.toString().trim()
                 // Vérification si le texte extrait n'est pas vide.
                 if (nomPlat.isNotEmpty()) {
@@ -98,12 +101,14 @@ class BoutonsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Lorsqu'on clique sur le bouton type de plat on utilise la méthode montrerDialogueDifficultes pour
+        // afficher une boite de dialogue et on séléctionne la difficulté voulu
         findViewById<MaterialButton>(R.id.btnChercherPlatParDifficulte).setOnClickListener {
             montrerDialogueDifficultes()
         }
     }
 
-    // Définition de la fonction qui montre un dialogue avec des options de types de plats.
+    // On définit la fonction qui montre un dialogue avec des options de types de plats.
     private fun montrerDialogueTypeDePlat() {
         // Tableau pour l'affichage dans le dialogue
         val typesDePlatAffichage = arrayOf("Entrée", "Plat Principal", "Dessert", "Snack", "Accompagnement")
@@ -126,7 +131,7 @@ class BoutonsActivity : AppCompatActivity() {
         builder.create().show()
     }
 
-    // Définition de la fonction pour afficher un dialogue de sélection de difficulté.
+    // On définit la fonction pour afficher un dialogue de sélection de difficulté.
     private fun montrerDialogueDifficultes() {
         // Tableau contenant les options de difficulté à afficher dans le dialogue.
         val difficulte = arrayOf("FACILE", "MOYEN", "DIFFICILE")
@@ -156,7 +161,7 @@ class BoutonsActivity : AppCompatActivity() {
         builder.create().show()
     }
 
-
+    // On définit la fonction pour afficher un dialogue de sélection de sélection des ingrédients.
     private fun montrerDialogueSelectionIngredients() {
         // Initialisation d'un tableau contenant les ingrédients disponibles pour la sélection.
         val ingredients = arrayOf(

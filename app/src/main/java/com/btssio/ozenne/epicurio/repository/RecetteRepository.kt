@@ -31,25 +31,38 @@ class RecetteRepository(private val context: Context) {
      * @return Une liste de recettes décodées depuis le fichier JSON.
      */
     private fun chargerRecettes(): List<Recette> {
-        // Lecture du contenu JSON des recettes à partir de la fonction getJsonDataFromAsset
-
+        // Tentative de récupération du contenu JSON du fichier 'recettes.json' stocké dans les assets de l'application.
         val jsonFileString = getJsonDataFromAsset(context, "recettes.json")
+
+        // Vérification si le contenu JSON n'est pas null, sinon log d'une erreur et retour d'une liste vide.
         if (jsonFileString == null) {
-            Log.e("RecetteRepository", "JSON data is null")
-            return emptyList()
+            Log.e("RecetteRepository", "Le JSON est vide ") // Log d'erreur si aucun contenu n'est trouvé.
+            return emptyList() // Retourne une liste vide si le contenu JSON est null.
         }
+
+        // Initialisation de Gson pour la désérialisation du JSON.
         val gson = Gson()
+
+        // Création d'un type token pour indiquer à Gson quel type de données il doit désérialiser,
+        // ici une liste de Recette.
         val listRecetteType = object : TypeToken<List<Recette>>() {}.type
+
+        // Désérialisation du string JSON en une liste d'objets Recette.
+        // Utilisation de l'opérateur Elvis pour retourner une liste vide si le résultat est null.
         val recettes = gson.fromJson<List<Recette>>(jsonFileString, listRecetteType) ?: emptyList()
 
-        // Convertir les noms de fichiers en identifiants de ressources
+        // Parcours de chaque recette pour convertir les noms de fichiers d'images (imageResId) en identifiants de ressources.
         return recettes.map { recette ->
             recette.apply {
+                // Conversion du nom de fichier en identifiant de ressource drawable.
+                // Utilisation de resources.getIdentifier pour obtenir un ID de ressource à partir du nom de fichier.
                 imageResId = context.resources.getIdentifier(imageResId, "drawable", context.packageName).toString()
+                // Log du nouvel identifiant de ressource pour le débogage.
                 Log.d("imageresid", imageResId)
             }
         }
     }
+
 
     /**
      * Lit les données JSON à partir d'un fichier dans les assets.
@@ -62,7 +75,7 @@ class RecetteRepository(private val context: Context) {
         return try {
             context.assets.open(fileName).bufferedReader().use { it.readText() }
         } catch (ioException: IOException) {
-            Log.e("RecetteRepository", "Error reading from $fileName", ioException)
+            Log.e("RecetteRepository", "Erreur en lisant $fileName", ioException)
             null
         }
     }

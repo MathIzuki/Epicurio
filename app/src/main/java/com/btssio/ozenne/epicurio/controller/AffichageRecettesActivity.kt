@@ -23,7 +23,7 @@ class AffichageRecettesActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_affichage_recettes)
         findViewById<TextView>(R.id.txtHeader).setOnClickListener {
-            // Terminez l'activité pour retourner à l'activité précédente
+            // On termine l'activité pour retourner à l'activité précédente
             finish()
         }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.principal)) { v, insets ->
@@ -43,7 +43,7 @@ class AffichageRecettesActivity : AppCompatActivity() {
     // Méthode pour filtrer les recettes en fonction des critères spécifiés.
     private fun filtrerRecettes(typeFiltre: String?, critere: String?): List<Recette> {
         val repository = RecetteRepository(this@AffichageRecettesActivity)
-
+        // On utilise une fonction différente en fonction du type de filtre en paramètre
         return when (typeFiltre) {
             "DIFFICULTE" -> repository.filtrerRecettesParDifficulte(NiveauDifficulte.valueOf(critere!!))
             "TYPE" -> repository.filtrerRecettesParType(TypeDePlat.valueOf(critere!!))
@@ -55,7 +55,7 @@ class AffichageRecettesActivity : AppCompatActivity() {
             else -> repository.obtenirToutesLesRecettes()
         }
     }
-    // Méthode pour afficher les recettes filtrées à l'aide d'un RecyclerView.
+    // Méthode pour afficher les recettes en paramètres l'aide d'un RecyclerView.
     private fun afficherRecettes(recettes: List<Recette>) {
         if (recettes.isEmpty()) {
             // Aucune recette ne correspond à la sélection, affichez un Toast
